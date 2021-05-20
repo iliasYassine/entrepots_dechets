@@ -42,7 +42,13 @@ app.post('/addUser', async (req, res) => {
     if('undefined' == name || 'undefined' == firstName ||'undefined' == email ||'undefined' == password) {
         res.status(422).json({error:'parameter missing!'})
     }
-    await serviceUser.add(req, res);
+    try{ 
+        await serviceUser.add(req, res);
+    }
+    catch(err){
+        res.status(501).json({err})
+
+   }
 })
 //users
 app.get('/users', async (req, res) => {  
