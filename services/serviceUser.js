@@ -2,6 +2,8 @@ const Model = require('../models/Model');
 const jwt =  require('jsonwebtoken')
 const fs = require('fs')
 const secret = fs.readFileSync('./params/secret.key')
+
+/// 
 exports.getAll = async (req, res, next) => {
     console.log('exports.getAll');
     try {
@@ -12,6 +14,8 @@ exports.getAll = async (req, res, next) => {
         return res.status(501).json(error);
     }
 }
+
+/// 
 exports.getById = async (req, res, next) => {
     const { id } = req.params;
 
@@ -28,6 +32,7 @@ exports.getById = async (req, res, next) => {
     }
 }
 
+/// creer un json  qui renvoi les information d'un user nom,prenom,email,passwd,role 
 exports.add = async (req, res, next) => {
     const temp = {};
 
@@ -54,6 +59,7 @@ exports.add = async (req, res, next) => {
     }
 }
 
+/// authentifie en focntion de l'email et du password de l'individu
 exports.authenticate = async (req, res, next) => {
     try {
         console.log('req.query.email '+req.query.email);
@@ -74,6 +80,7 @@ exports.authenticate = async (req, res, next) => {
     }
 }
 
+///
 exports.update = async (req, res, next) => {
     const temp = {};
 
@@ -104,6 +111,7 @@ exports.update = async (req, res, next) => {
     }
 }
 
+///
 exports.delete = async (req, res, next) => {
     const { id } = req.body;
 
